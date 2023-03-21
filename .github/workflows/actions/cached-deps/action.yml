@@ -1,0 +1,14 @@
+name: "Get & Cache Dependencies"
+description: "Getthe dependencies (via npm) and cache them."
+runs:
+  using: "composite"
+  steps:
+    - name: Cache dependencies
+      id: cache
+      uses: action/cache@v3
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependecies
+      if: steps.cache.outputs.cache-hit != "true"
+      run: npm ci

@@ -22,7 +22,7 @@ jobs:
       - name: Load & cache dependencies
         uses: ./.github/actions/cached-deps
           with:
-          caching: 'false'
+            caching: 'false'
       - name: Build Webiste
         run: npm run build
       - name: Upload Artifact

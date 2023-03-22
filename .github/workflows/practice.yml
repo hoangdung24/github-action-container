@@ -16,20 +16,20 @@ jobs:
           caching: "true"
       - name: Output Info
         run: echo "Cache used? ${{ steps.cache-deps.outputs.used-cache }}"
-  build:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Load & cache dependencies
-        uses: ./.github/actions/cached-deps
-        with:
-          caching: "false"
-      - name: Build Webiste
-        run: npm run build
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist-files
-          path: ./dist
+  # build:
+  #   needs: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+  #     - name: Load & cache dependencies
+  #       uses: ./.github/actions/cached-deps
+  #       with:
+  #         caching: "false"
+  #     - name: Build Webiste
+  #       run: npm run build
+  #     - name: Upload Artifact
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: dist-files
+  #         path: ./dist

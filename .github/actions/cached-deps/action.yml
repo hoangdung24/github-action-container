@@ -12,6 +12,8 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Check Input Info
+      run: echo "Test input value ${{ inputs.caching }}"
     - name: Cache dependencies
       if: inputs.caching == 'true'
       uses: actions/cache@v3
